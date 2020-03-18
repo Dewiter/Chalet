@@ -6,6 +6,25 @@ Thanks!
 
 
 ----------------
+= 2.4.7(26.02.2020) =
+
+Fixed:
+-Fatal error that can happen on password protected pages after 2.4.6 update
+
+----------------
+= 2.4.6(24.02.2020) =
+
+Added:
+-Social icon for Facebook Messenger(requires using Font Awesome 5 in Elementor)
+-filter "apollo13framework_post_navigation_image_size" to change size of images in post navigation
+-(Rife Pro) list of selected files in photoproffing(available while editing album and in confirmation e-mail)
+
+Fixed:
+-Possible source of errors when running some actions with WPCLI
+-Issue with some plugins that are using anchors for JS navigation
+-Issue with Yoast SEO on the theme custom template for password protected page
+
+----------------
 = 2.4.5(18.11.2019) =
 
 Added:

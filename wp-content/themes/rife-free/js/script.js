@@ -2299,7 +2299,7 @@ jQuery.noConflict();
 					var href = decodeURIComponent(window.location.hash);
 
 					//if href is not one of those values
-					if(['#','#!'].indexOf(href) === -1 && href.indexOf('=') === -1 && href.indexOf('&') === -1){
+					if(['#','#!','#/'].indexOf(href) === -1 && href.indexOf('=') === -1 && href.indexOf('&') === -1){
 						var	target = $(href),
 							   one_page_target = $('div.vc_row[data-a13-one-page-pointer=' + href.slice(1) +']');
 

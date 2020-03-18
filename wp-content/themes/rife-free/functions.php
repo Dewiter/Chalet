@@ -29,5 +29,6 @@ else{
 	require_once( get_template_directory() . '/advance/class-apollo13-framework.php' );
 }
 
+global $apollo13framework_a13;
 $apollo13framework_a13 = new Apollo13Framework();
 $apollo13framework_a13->start();

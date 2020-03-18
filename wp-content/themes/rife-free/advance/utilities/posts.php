@@ -254,12 +254,21 @@ if(!function_exists('apollo13framework_posts_navigation')){
             if($is_prev || $is_next){
                 echo '<div class="posts-nav">';
 
+                /**
+                 * Sample usage to change size of images in post naviagtion
+                add_filter( 'apollo13framework_post_navigation_image_size', function(){
+                    return array(245,245);
+                });
+                 *
+                 */
+                $image_sizes = apply_filters( 'apollo13framework_post_navigation_image_size', array( 245, 100 ) );
+
                 if($is_prev){
                     $id = $prev_post->ID;
                     echo '<a href="'.esc_url( get_permalink($id) ).'" class="item prev">'
                          .'<span><i class="fa fa-long-arrow-'.( is_rtl() ? 'right' : 'left' ).'"></i> '.esc_html__( 'Previous article', 'rife-free' ).'</span>'
                          .'<span class="title">'.esc_html( $prev_post->post_title ).'</span>'
-                         .'<span class="image">'.apollo13framework_make_post_image( $id, array( 245, 100 )).'</span>'
+                         .'<span class="image">'.apollo13framework_make_post_image( $id, $image_sizes ).'</span>'
                          .'</a>';
                 }
                 if($is_next){
@@ -267,7 +276,7 @@ if(!function_exists('apollo13framework_posts_navigation')){
                     echo '<a href="'.esc_url( get_permalink($id) ).'" class="item next">'
                          .'<span>'.esc_html__( 'Next article', 'rife-free' ).' <i class="fa fa-long-arrow-'.( is_rtl() ? 'left' : 'right' ).'"></i></span>'
                          .'<span class="title">'.esc_html( $next_post->post_title ).'</span>'
-                         .'<span class="image">'.apollo13framework_make_post_image( $id, array( 245, 100 )).'</span>'
+                         .'<span class="image">'.apollo13framework_make_post_image( $id, $image_sizes ).'</span>'
                          .'</a>';
                 }
 
@@ -997,3 +1006,24 @@ if(!function_exists('apollo13framework_schema_args')){
     }
 }
 
+if(!function_exists('apollo13framework_remove_wpseo')){
+    /**
+     * Removes Yoast SEO on some page that are password protected with the theme custom template
+     *
+     * @since 2.4.6
+     *
+     */
+    function apollo13framework_remove_wpseo() {
+        if( class_exists('WPSEO_Frontend') && post_password_required() ){
+            global $wpseo_front;
+            if( defined( $wpseo_front ) ){
+                remove_action( 'wp_head', array( $wpseo_front, 'head' ), 1 );
+            }
+            else{
+                $wp_thing = WPSEO_Frontend::get_instance();
+                remove_action( 'wp_head', array( $wp_thing, 'head' ), 1 );
+            }
+        }
+    }
+}
+add_action( 'template_redirect', 'apollo13framework_remove_wpseo' );

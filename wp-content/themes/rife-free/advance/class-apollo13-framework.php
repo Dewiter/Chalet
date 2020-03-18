@@ -70,9 +70,9 @@ class Apollo13Framework
         define('A13FRAMEWORK_THEME_ID_NUMBER', '66');
         define('A13FRAMEWORK_OPTIONS_NAME', 'apollo13_option_rife');
         define('A13FRAMEWORK_CACHE', 'apollo13_rife_cache');
-        define('A13FRAMEWORK_THEME_VERSION', '2.4.5');
+        define('A13FRAMEWORK_THEME_VERSION', '2.4.7');
         define('A13FRAMEWORK_THEME_VER', A13FRAMEWORK_THEME_VERSION ); //legacy - do not use
-        define('A13FRAMEWORK_MIN_COMPANION_VERSION', '1.7.1');
+        define('A13FRAMEWORK_MIN_COMPANION_VERSION', '1.8.3');
         define('A13FRAMEWORK_MIN_PHP_VERSION', '5.3');
         define('A13FRAMEWORK_MIN_WP_VERSION', '4.7');
 
@@ -912,6 +912,7 @@ class Apollo13Framework
             'instagram'   => array( 'fa fa-instagram', 'Instagram' ),
             'lastfm'      => array( 'fa fa-lastfm', 'Lastfm' ),
             'linkedin'    => array( 'fa fa-linkedin', 'Linkedin' ),
+            'messenger'   => array( 'fab fa-facebook-messenger', 'Facebook Messenger' ),
             'paypal'      => array( 'fa fa-paypal', 'Paypal' ),
             'pinterest'   => array( 'fa fa-pinterest-p', 'Pinterest' ),
             'reddit'      => array( 'fa fa-reddit-alien', 'Reddit' ),

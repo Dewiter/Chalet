@@ -317,6 +317,43 @@ function apollo13framework_print_form_controls( $option, &$params, $is_meta = fa
 		<?php
 		return true;
 	}
+	elseif ( $option['type'] === 'proofing_items' ) {
+		if(function_exists('a13fe_album_proofing_return_approved_files')){
+			$valid_tags = array(
+				'a'      => array(
+					'href' => array(),
+				),
+				'br'     => array(),
+				'code'   => array(),
+				'strong' => array(),
+			);
+			$approved_array = a13fe_album_proofing_return_approved_files(get_the_ID());
+			if(sizeof($approved_array) === 0){
+				$value = '';
+			}
+			else{
+				$value = '**'.__('Adobe Lightroom', 'rife-free').'**';
+
+				$value .= "\r\n".implode(', ', $approved_array);
+
+				$value .= "\r\n\r\n**".__('Windows Explorer or Mac Finder', 'rife-free').'**';
+				$value .= "\r\n\"".implode('" OR "', $approved_array).'"';
+			}
+
+
+			?>
+			<div class="textarea-input input-parent"<?php echo strlen($style) ? ' style="'.esc_attr($style).'"' : ''; ?>>
+				<label for="<?php echo esc_attr($input_prefix . $option['id']); ?>"><?php echo esc_html($option['name']); ?>&nbsp;</label>
+
+				<div class="input-desc">
+					<textarea rows="10" cols="20" class="large-text" id="<?php echo esc_attr($input_prefix . $option['id']); ?>" name="<?php echo esc_attr($input_prefix . $option['id']); ?>" readonly><?php echo esc_textarea( wp_unslash( $value ) ); ?></textarea>
+
+					<p class="desc"><?php echo wp_kses( isset( $description ) ? $description : '', $valid_tags ); ?></p>
+				</div>
+			</div>
+			<?php
+		}
+	}
 
 	return false;
 }
