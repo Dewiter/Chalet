@@ -13,3 +13,9 @@ RewriteRule . /wordpress/wordpress/index.php [L]
 </IfModule>
 
 # END WordPress
+# BEGIN ShortPixelWebp
+# Les directives (lignes) entre 'BEGIN ShortPixelWebp' et 'END ShortPixelWebp' sont
+# généré dynamiquement, et ne doivent uniquement être modifiées via les filtres WordPress.
+# Toute modification des directives entre ces marqueurs sera outrepassée.
+
+# END ShortPixelWebp
